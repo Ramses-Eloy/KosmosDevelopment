@@ -4,12 +4,12 @@ import type { ReactNode } from "react";
 import { es } from "@/content/es";
 import { site } from "@/content/site";
 import { ThemeProvider } from "@/components/theme-provider";
-import "./globals.css";
+import "@/app/globals.css";
 
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 
-export const metadata: Metadata = {
+export const baseMetadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: `${site.name} | ${es.tagline}`,
@@ -64,9 +64,10 @@ const jsonLd = {
   areaServed: "Latinoamérica",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+/** <html> y <body> compartidos; cada idioma tiene su propio layout raíz para declarar su lang. */
+export function RootShell({ lang, children }: { lang: "es" | "en"; children: ReactNode }) {
   return (
-    <html lang="es" suppressHydrationWarning className={`${sans.variable} ${display.variable}`}>
+    <html lang={lang} suppressHydrationWarning className={`${sans.variable} ${display.variable}`}>
       <body className="font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <ThemeProvider>{children}</ThemeProvider>

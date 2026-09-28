@@ -11,7 +11,7 @@ import { WhatsappButton } from "@/components/whatsapp-button";
 /** La página completa en el idioma de `t` (se usa en "/" y en "/en"). */
 export function Home({ t }: { t: Content }) {
   return (
-    <div lang={t.lang}>
+    <>
       <a
         href="#servicios"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white"
@@ -28,6 +28,6 @@ export function Home({ t }: { t: Content }) {
       </main>
       <Footer t={t} />
       <WhatsappButton label={t.ui.whatsapp} message={t.ui.whatsappText} />
-    </div>
+    </>
   );
 }
