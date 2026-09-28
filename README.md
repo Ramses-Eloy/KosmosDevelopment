@@ -15,18 +15,15 @@ npm start       # sirve el build
 
 ## Editar el contenido
 
-Todo el texto vive en **`content/site.ts`**; no hace falta tocar los componentes:
+La web está en español en `/` y en inglés en `/en`; el botón ES/EN de la cabecera cambia entre ambas.
 
-| Qué | Dónde en `content/site.ts` |
+| Qué | Dónde |
 | --- | --- |
-| Correo, teléfono, WhatsApp, redes sociales | `site` |
-| Título, subtítulo y estadísticas del inicio | `hero` |
-| Moneda y nota de precios | `pricing` |
-| Servicios y precios | `services` |
-| Proyectos del portafolio | `projects` |
-| Texto de "Nosotros", valores y tecnologías | `about` |
+| Correo, teléfono, WhatsApp, redes, moneda | `content/site.ts` |
+| Todos los textos en español (servicios, precios, portafolio, nosotros…) | `content/es.ts` |
+| Los mismos textos en inglés | `content/en.ts` |
 
-Los valores marcados como `PLACEHOLDER` son de ejemplo.
+`content/en.ts` debe tener la misma forma que `content/es.ts`: si cambias un precio o un proyecto en uno, cámbialo en el otro (TypeScript avisa si falta algún campo). Los valores marcados como `PLACEHOLDER` son de ejemplo.
 
 **Portafolio con capturas:** guarda la imagen en `public/portfolio/` y añade `image: "/portfolio/mi-proyecto.png"` al proyecto. Sin imagen se muestra una portada con degradado e icono.
 
@@ -36,7 +33,7 @@ Los valores marcados como `PLACEHOLDER` son de ejemplo.
 
 Los SVG oficiales (`logo-kosmost.svg` y `logo-escrito.svg`) se recortaron y conservan sus degradados azules. El azul marino usa `currentColor`, así que en tema oscuro pasa a blanco:
 
-- `components/ui/logo.tsx`: `<Isotipo />`, `<Wordmark />` y `<LogoHorizontal />` (cabecera).
+- `components/ui/logo.tsx`: `<Isotipo />` (hero) y `<Wordmark />` (cabecera, pie y Nosotros).
 - `public/brand/`: versiones sueltas con texto azul marino y con texto blanco para usar fuera de la web.
 - `app/icon.svg`: favicon que cambia de color según el tema del navegador.
 
@@ -46,5 +43,5 @@ Los SVG oficiales (`logo-kosmost.svg` y `logo-escrito.svg`) se recortaron y cons
 app/                 layout (SEO, fuentes, tema), página, sitemap, robots, imagen OG
 components/sections  header, hero, services, portfolio, about, contact, footer
 components/ui        logo, iconos, animación Reveal, encabezados de sección
-content/site.ts      todo el contenido editable
+content/             site.ts (datos), es.ts y en.ts (textos)
 ```

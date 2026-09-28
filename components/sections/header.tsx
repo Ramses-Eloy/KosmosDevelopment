@@ -1,12 +1,15 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { nav } from "@/content/site";
-import { LogoHorizontal } from "@/components/ui/logo";
+import type { Content } from "@/content/es";
+import { Wordmark } from "@/components/ui/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-export function Header() {
+export function Header({ t }: { t: Content }) {
+  const nav = t.nav;
+  const isEn = t.lang === "en";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -32,8 +35,8 @@ export function Header() {
       }`}
     >
       <div className="container flex h-16 items-center justify-between md:h-20">
-        <a href="#inicio" aria-label="Kosmos Development, inicio" onClick={() => setOpen(false)}>
-          <LogoHorizontal />
+        <a href="#inicio" aria-label={`Kosmos Development, ${t.ui.home}`} onClick={() => setOpen(false)}>
+          <Wordmark className="h-7 w-auto md:h-8" title="Kosmos Development" />
         </a>
 
         <nav aria-label="Principal" className="hidden items-center gap-1 md:flex">
@@ -49,17 +52,26 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
+          <Link
+            href={isEn ? "/" : "/en"}
+            hrefLang={isEn ? "es" : "en"}
+            aria-label={t.ui.switchLang}
+            title={t.ui.switchLang}
+            className="grid h-10 min-w-10 place-items-center rounded-full border border-slate-200 px-3 text-xs font-bold tracking-wide text-slate-700 transition hover:border-brand-400 hover:text-brand-600 dark:border-white/10 dark:text-slate-300 dark:hover:border-accent-400 dark:hover:text-accent-400"
+          >
+            {isEn ? "ES" : "EN"}
+          </Link>
+          <ThemeToggle labels={t.ui} />
           <a
             href="#contacto"
             className="hidden rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-700 lg:inline-flex"
           >
-            Cotizar
+            {t.ui.quote}
           </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-label={open ? t.ui.closeMenu : t.ui.openMenu}
             aria-expanded={open}
             className="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-slate-700 dark:border-white/10 dark:text-slate-300 md:hidden"
           >
@@ -70,7 +82,7 @@ export function Header() {
 
       {open && (
         <nav
-          aria-label="Móvil"
+          aria-label="Menu"
           className="container flex h-[calc(100dvh-4rem)] flex-col gap-1 border-t border-slate-200 pt-4 dark:border-white/10 md:hidden"
         >
           {nav.map((item) => (
@@ -88,7 +100,7 @@ export function Header() {
             onClick={() => setOpen(false)}
             className="mt-4 rounded-full bg-brand-600 px-5 py-3 text-center font-semibold text-white"
           >
-            Cotizar mi proyecto
+            {t.ui.quoteLong}
           </a>
         </nav>
       )}

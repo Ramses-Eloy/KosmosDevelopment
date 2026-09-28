@@ -27,14 +27,3 @@ export function Isotipo(props: SvgProps) {
 export function Wordmark(props: SvgProps) {
   return <BrandSvg data={wordmark} {...props} />;
 }
-
-/** Logo horizontal: isotipo y tipografía separados por una línea fina. */
-export function LogoHorizontal({ className = "" }: { className?: string }) {
-  return (
-    <span className={`inline-flex items-center gap-3 ${className}`}>
-      <Isotipo className="h-8 w-auto" />
-      <span aria-hidden className="h-6 w-px bg-slate-300 dark:bg-white/20" />
-      <Wordmark className="h-6 w-auto" title="Kosmos Development" />
-    </span>
-  );
-}

@@ -1,22 +1,24 @@
 import { Check } from "lucide-react";
-import { pricing, services } from "@/content/site";
+import type { Content } from "@/content/es";
+import { site } from "@/content/site";
 import { Icon } from "@/components/ui/icon";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-export function Services() {
+export function Services({ t }: { t: Content }) {
+  const s = t.services;
   return (
     <section id="servicios" className="scroll-mt-20 py-24 md:py-32">
       <div className="container">
         <SectionHeading
-          eyebrow="Servicios"
-          title="Planes mensuales, todo incluido"
-          description="Elige lo que necesitas. Nosotros lo construimos, lo alojamos y lo mantenemos funcionando."
+          eyebrow={s.eyebrow}
+          title={s.title}
+          description={s.description}
         />
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => {
-            const isNumber = /\d/.test(service.price);
+          {s.items.map((service, i) => {
+            const isNumber = /^\d/.test(service.price);
             return (
               <Reveal key={service.title} delay={(i % 3) * 100}>
                 <article
@@ -28,7 +30,7 @@ export function Services() {
                 >
                   {service.featured && (
                     <span className="absolute -top-3 right-6 rounded-full bg-accent-400 px-3 py-1 text-xs font-bold uppercase tracking-wide text-space-950">
-                      Más popular
+                      {s.popular}
                     </span>
                   )}
                   <div
@@ -46,16 +48,16 @@ export function Services() {
                   </p>
 
                   <p className="mt-6 flex items-baseline gap-1">
-                    {/^Desde/.test(service.price) && (
-                      <span className={`mr-1 text-sm ${service.featured ? "text-brand-100" : "text-slate-500 dark:text-slate-400"}`}>Desde</span>
+                    {service.from && (
+                      <span className={`mr-1 text-sm ${service.featured ? "text-brand-100" : "text-slate-500 dark:text-slate-400"}`}>{s.from}</span>
                     )}
                     <span className={`font-display text-3xl font-bold ${service.featured ? "" : "text-slate-900 dark:text-white"}`}>
-                      {isNumber ? `$${service.price.replace(/^Desde\s+/, "")}` : service.price}
+                      {isNumber ? `$${service.price}` : service.price}
                     </span>
                     {isNumber && (
                       <span className={`text-sm ${service.featured ? "text-brand-100" : "text-slate-500 dark:text-slate-400"}`}>
-                        {pricing.currency}
-                        {service.period}
+                        {site.currency}
+                        {s.perMonth}
                       </span>
                     )}
                   </p>
@@ -78,7 +80,7 @@ export function Services() {
                         : "border border-slate-300 text-slate-800 hover:border-brand-500 hover:bg-brand-600 hover:text-white dark:border-white/15 dark:text-white dark:hover:border-brand-500"
                     }`}
                   >
-                    Contratar
+                    {s.cta}
                   </a>
                 </article>
               </Reveal>
@@ -87,7 +89,7 @@ export function Services() {
         </div>
 
         <Reveal>
-          <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-slate-500 dark:text-slate-400">{pricing.note}</p>
+          <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-slate-500 dark:text-slate-400">{s.note}</p>
         </Reveal>
       </div>
     </section>

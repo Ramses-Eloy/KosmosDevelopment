@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import type { ReactNode } from "react";
+import { es } from "@/content/es";
 import { site } from "@/content/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
@@ -11,10 +12,10 @@ const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | ${site.tagline}`,
+    default: `${site.name} | ${es.tagline}`,
     template: `%s | ${site.name}`,
   },
-  description: site.description,
+  description: es.description,
   applicationName: site.name,
   keywords: [
     "desarrollo de software",
@@ -28,19 +29,19 @@ export const metadata: Metadata = {
     "Kosmos Development",
   ],
   authors: [{ name: site.name, url: site.url }],
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", languages: { es: "/", en: "/en" } },
   openGraph: {
     type: "website",
     locale: "es_ES",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} | ${site.tagline}`,
-    description: site.description,
+    title: `${site.name} | ${es.tagline}`,
+    description: es.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} | ${site.tagline}`,
-    description: site.description,
+    title: `${site.name} | ${es.tagline}`,
+    description: es.description,
   },
   robots: { index: true, follow: true },
 };
@@ -58,7 +59,7 @@ const jsonLd = {
   name: site.name,
   url: site.url,
   email: site.email,
-  description: site.description,
+  description: es.description,
   logo: `${site.url}/brand/kosmos-isotipo.svg`,
   areaServed: "Latinoamérica",
 };

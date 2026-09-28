@@ -1,5 +1,6 @@
-import { nav, services, site } from "@/content/site";
-import { Isotipo, Wordmark } from "@/components/ui/logo";
+import type { Content } from "@/content/es";
+import { site } from "@/content/site";
+import { Wordmark } from "@/components/ui/logo";
 import { FacebookIcon, GithubIcon, InstagramIcon, LinkedinIcon } from "@/components/ui/social-icons";
 
 const socials = [
@@ -9,7 +10,7 @@ const socials = [
   { key: "facebook", label: "Facebook", Icon: FacebookIcon },
 ] as const;
 
-export function Footer() {
+export function Footer({ t }: { t: Content }) {
   const year = new Date().getFullYear();
   const activeSocials = socials.filter((s) => site.social[s.key]);
 
@@ -17,12 +18,11 @@ export function Footer() {
     <footer className="border-t border-slate-200 bg-white dark:border-white/10 dark:bg-space-950">
       <div className="container grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <a href="#inicio" className="inline-flex flex-col items-start gap-3" aria-label="Kosmos Development, inicio">
-            <Isotipo className="h-12 w-auto" />
-            <Wordmark className="h-8 w-auto" />
+          <a href="#inicio" className="inline-flex" aria-label={`Kosmos Development, ${t.ui.home}`}>
+            <Wordmark className="h-9 w-auto" />
           </a>
-          <p className="mt-2 text-xs font-medium uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">{site.tagline}</p>
-          <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-600 dark:text-slate-400">{site.description}</p>
+          <p className="mt-2 text-xs font-medium uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">{t.tagline}</p>
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-600 dark:text-slate-400">{t.description}</p>
           {activeSocials.length > 0 && (
             <ul className="mt-6 flex gap-3">
               {activeSocials.map(({ key, label, Icon }) => (
@@ -42,10 +42,10 @@ export function Footer() {
           )}
         </div>
 
-        <FooterColumn title="Navegación" links={nav} />
-        <FooterColumn title="Servicios" links={services.map((s) => ({ label: s.title, href: "#servicios" }))} />
+        <FooterColumn title={t.footer.navigation} links={t.nav} />
+        <FooterColumn title={t.footer.services} links={t.services.items.map((s) => ({ label: s.title, href: "#servicios" }))} />
         <FooterColumn
-          title="Contacto"
+          title={t.footer.contact}
           links={[
             { label: site.email, href: `mailto:${site.email}` },
             { label: site.phone, href: `tel:${site.phone.replace(/[^\d+]/g, "")}` },
@@ -57,9 +57,11 @@ export function Footer() {
       <div className="border-t border-slate-200 dark:border-white/10">
         <div className="container flex flex-col items-center justify-between gap-2 py-6 text-sm text-slate-500 dark:text-slate-400 sm:flex-row">
           <p>
-            © {year} {site.name}. Todos los derechos reservados.
+            © {year} {site.name}. {t.footer.rights}
           </p>
-          <p>Hecho con cariño y alojado en {site.domain}</p>
+          <p>
+            {t.footer.madeWith} {site.domain}
+          </p>
         </div>
       </div>
     </footer>

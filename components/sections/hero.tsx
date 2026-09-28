@@ -1,5 +1,5 @@
 import { ArrowRight, Sparkles } from "lucide-react";
-import { hero } from "@/content/site";
+import type { Content } from "@/content/es";
 import { Isotipo } from "@/components/ui/logo";
 
 // Estrellas con posiciones fijas (deterministas para evitar diferencias entre servidor y cliente)
@@ -10,7 +10,8 @@ const stars = Array.from({ length: 40 }, (_, i) => ({
   delay: (i % 8) * 0.5,
 }));
 
-export function Hero() {
+export function Hero({ t }: { t: Content }) {
+  const hero = t.hero;
   return (
     <section id="inicio" className="relative overflow-hidden pb-20 pt-32 md:pb-28 md:pt-40">
       {/* Fondo */}
@@ -46,17 +47,17 @@ export function Hero() {
           </p>
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
             <a
-              href={hero.primaryCta.href}
+              href="#servicios"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 font-semibold text-white shadow-xl shadow-brand-600/25 transition hover:bg-brand-700 sm:w-auto"
             >
-              {hero.primaryCta.label}
+              {hero.primaryCta}
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </a>
             <a
-              href={hero.secondaryCta.href}
+              href="#contacto"
               className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 px-7 py-3.5 font-semibold text-slate-800 transition hover:border-brand-400 hover:text-brand-700 dark:border-white/15 dark:text-white dark:hover:border-accent-400 dark:hover:text-accent-400 sm:w-auto"
             >
-              {hero.secondaryCta.label}
+              {hero.secondaryCta}
             </a>
           </div>
         </div>

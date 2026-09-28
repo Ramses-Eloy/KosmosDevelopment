@@ -1,22 +1,23 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import { projects } from "@/content/site";
+import type { Content } from "@/content/es";
 import { Icon } from "@/components/ui/icon";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-export function Portfolio() {
+export function Portfolio({ t }: { t: Content }) {
+  const p = t.portfolio;
   return (
     <section id="portafolio" className="scroll-mt-20 bg-slate-50 py-24 dark:bg-space-900 md:py-32">
       <div className="container">
         <SectionHeading
-          eyebrow="Portafolio"
-          title="Proyectos que ya están en órbita"
-          description="Algunos de los sistemas y sitios que hemos construido y seguimos alojando para nuestros clientes."
+          eyebrow={p.eyebrow}
+          title={p.title}
+          description={p.description}
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => {
+          {p.items.map((project, i) => {
             const Wrapper = project.url ? "a" : "div";
             return (
               <Reveal key={project.title} delay={(i % 3) * 100}>
@@ -28,7 +29,7 @@ export function Portfolio() {
                     {project.image ? (
                       <Image
                         src={project.image}
-                        alt={`Captura de ${project.title}`}
+                        alt={`${p.screenshotOf} ${project.title}`}
                         fill
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         className="object-cover transition duration-500 group-hover:scale-105"

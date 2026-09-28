@@ -1,21 +1,23 @@
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import type { Content } from "@/content/es";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ContactForm } from "./contact-form";
 
-export function Contact() {
+export function Contact({ t }: { t: Content }) {
+  const c = t.contact;
   const items = [
-    { icon: Mail, label: "Correo", value: site.email, href: `mailto:${site.email}` },
-    { icon: Phone, label: "Teléfono", value: site.phone, href: `tel:${site.phone.replace(/[^\d+]/g, "")}` },
+    { icon: Mail, label: c.email, value: site.email, href: `mailto:${site.email}` },
+    { icon: Phone, label: c.phone, value: site.phone, href: `tel:${site.phone.replace(/[^\d+]/g, "")}` },
     site.whatsapp && {
       icon: MessageCircle,
       label: "WhatsApp",
-      value: "Escríbenos por WhatsApp",
+      value: c.whatsappValue,
       href: `https://wa.me/${site.whatsapp}`,
     },
-    { icon: MapPin, label: "Ubicación", value: site.location },
-    { icon: Clock, label: "Horario", value: site.hours },
+    { icon: MapPin, label: c.location, value: c.locationValue },
+    { icon: Clock, label: c.hours, value: c.hoursValue },
   ].filter(Boolean) as { icon: typeof Mail; label: string; value: string; href?: string }[];
 
   return (
@@ -23,9 +25,9 @@ export function Contact() {
       <div aria-hidden className="absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-brand-400/10 blur-3xl" />
       <div className="container relative">
         <SectionHeading
-          eyebrow="Contacto"
-          title="¿Listo para despegar?"
-          description="Cuéntanos tu idea y te enviamos una propuesta sin compromiso."
+          eyebrow={c.eyebrow}
+          title={c.title}
+          description={c.description}
         />
 
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
@@ -64,7 +66,7 @@ export function Contact() {
             </ul>
           </Reveal>
           <Reveal delay={150}>
-            <ContactForm />
+            <ContactForm f={c.form} services={t.services.items.map((s) => s.title)} />
           </Reveal>
         </div>
       </div>

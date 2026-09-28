@@ -1,8 +1,9 @@
 import { ImageResponse } from "next/og";
+import { es } from "@/content/es";
 import { site } from "@/content/site";
 import { isotipo, wordmark } from "@/components/ui/logo-paths";
 
-export const alt = `${site.name}: ${site.tagline}`;
+export const alt = `${site.name}: ${es.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,7 +41,7 @@ export default function OpengraphImage() {
               `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${wordmark.viewBox}" color="#ffffff">${wordmark.svg}</svg>`,
             )}`}
           />
-          <div style={{ fontSize: 34, color: "#93c5fd", marginTop: 8 }}>{site.tagline}</div>
+          <div style={{ fontSize: 34, color: "#93c5fd", marginTop: 8 }}>{es.tagline}</div>
           <div style={{ fontSize: 28, color: "#00aafc", marginTop: 32 }}>{site.domain}</div>
         </div>
       </div>
