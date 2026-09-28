@@ -5,6 +5,7 @@ import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/sections/hero";
 import { Portfolio } from "@/components/sections/portfolio";
 import { Services } from "@/components/sections/services";
+import { WhatsappButton } from "@/components/whatsapp-button";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <WhatsappButton />
     </>
   );
 }

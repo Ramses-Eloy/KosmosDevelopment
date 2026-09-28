@@ -28,17 +28,16 @@ export const site = {
   tagline: "Desarrollo de software y soluciones",
   description:
     "Creamos, alojamos y mantenemos tu software. Webs, SaaS y sistemas a medida con hosting, dominio, SSL, soporte y mantenimiento incluidos en una sola mensualidad.",
-  // PLACEHOLDER: datos de contacto
-  email: "contacto@kosmosdev.com",
-  phone: "+00 000 000 0000",
-  whatsapp: "", // p. ej. "5215512345678" (solo dígitos, con código de país). Vacío = no se muestra.
+  email: "contacto@kosmosdev.com", // PLACEHOLDER
+  phone: "+507 6959-6275",
+  whatsapp: "50769596275", // solo dígitos, con código de país. Vacío = no se muestra el botón.
   location: "Atención remota para toda Latinoamérica",
   hours: "Lunes a viernes, 9:00 a 18:00",
   social: {
-    // PLACEHOLDER: deja vacío ("") lo que no uses y no aparecerá
+    // Deja vacío ("") lo que no uses y no aparecerá
     github: "https://github.com/Ramses-Eloy",
     linkedin: "",
-    instagram: "",
+    instagram: "https://www.instagram.com/kosmos_development/",
     facebook: "",
   },
 };
