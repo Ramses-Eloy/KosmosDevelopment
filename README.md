@@ -34,10 +34,10 @@ Los valores marcados como `PLACEHOLDER` son de ejemplo.
 
 ## Logos
 
-Los SVG originales se limpiaron (sin metadatos, recortados) y usan `currentColor`, así se adaptan al tema claro y oscuro:
+Los SVG oficiales (`logo-kosmost.svg` y `logo-escrito.svg`) se recortaron y conservan sus degradados azules. El azul marino usa `currentColor`, así que en tema oscuro pasa a blanco:
 
-- `components/ui/logo.tsx`: `<Isotipo />`, `<Wordmark />`, `<LogoHorizontal />` (cabecera) y `<LogoCompleto />` (con lema).
-- `public/brand/`: versiones sueltas en negro y blanco para usar fuera de la web.
+- `components/ui/logo.tsx`: `<Isotipo />`, `<Wordmark />` y `<LogoHorizontal />` (cabecera).
+- `public/brand/`: versiones sueltas con texto azul marino y con texto blanco para usar fuera de la web.
 - `app/icon.svg`: favicon que cambia de color según el tema del navegador.
 
 ## Estructura

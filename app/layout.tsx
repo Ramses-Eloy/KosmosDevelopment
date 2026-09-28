@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#060814" },
+    { media: "(prefers-color-scheme: dark)", color: "#020b18" },
   ],
 };
 
@@ -59,7 +59,7 @@ const jsonLd = {
   url: site.url,
   email: site.email,
   description: site.description,
-  logo: `${site.url}/brand/kosmos-logo.svg`,
+  logo: `${site.url}/brand/kosmos-isotipo.svg`,
   areaServed: "Latinoamérica",
 };
 

@@ -71,7 +71,7 @@ export function Hero() {
           </div>
           <div className="absolute inset-20 rounded-full bg-gradient-to-br from-white to-brand-50 shadow-2xl shadow-brand-500/20 dark:from-white/10 dark:to-white/[0.02] dark:shadow-brand-500/10" />
           <div className="absolute inset-0 grid place-items-center">
-            <Isotipo className="w-1/2 animate-float text-brand-800 drop-shadow-xl dark:text-white" />
+            <Isotipo className="w-3/5 animate-float drop-shadow-xl" />
           </div>
         </div>
       </div>

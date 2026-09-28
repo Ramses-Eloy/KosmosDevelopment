@@ -18,8 +18,8 @@ export function Footer() {
       <div className="container grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <a href="#inicio" className="inline-flex flex-col items-start gap-3" aria-label="Kosmos Development, inicio">
-            <Isotipo className="h-12 w-auto text-brand-700 dark:text-brand-300" />
-            <Wordmark className="h-5 w-auto text-slate-900 dark:text-white" />
+            <Isotipo className="h-12 w-auto" />
+            <Wordmark className="h-8 w-auto" />
           </a>
           <p className="mt-2 text-xs font-medium uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">{site.tagline}</p>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-600 dark:text-slate-400">{site.description}</p>

@@ -11,27 +11,27 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Paleta de marca: tonos "espaciales" (índigo profundo + cian)
+        // Paleta de marca tomada del logo: azules del degradado + azul marino
         brand: {
-          50: "#eef2ff",
-          100: "#e0e7ff",
-          200: "#c7d2fe",
-          300: "#a5b4fc",
-          400: "#818cf8",
-          500: "#6366f1",
-          600: "#4f46e5",
-          700: "#4338ca",
-          800: "#3730a3",
-          900: "#312e81",
-          950: "#1e1b4b",
+          50: "#eff6ff",
+          100: "#dbeafe",
+          200: "#bfdbfe",
+          300: "#93c5fd",
+          400: "#4ba3ff",
+          500: "#1a7dff",
+          600: "#0069fd",
+          700: "#0052d6",
+          800: "#0025c3",
+          900: "#0a2a5c",
+          950: "#051527",
         },
         accent: {
-          400: "#22d3ee",
-          500: "#06b6d4",
+          400: "#00aafc",
+          500: "#0094ff",
         },
         space: {
-          900: "#0b0f1e",
-          950: "#060814",
+          900: "#07162b",
+          950: "#020b18",
         },
       },
       fontFamily: {
